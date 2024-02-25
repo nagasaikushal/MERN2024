@@ -1,0 +1,21 @@
+.container{
+    max-width: 140rem;
+    padding: 4.2rem 2.4rem;
+    display: flex;
+    justify-content: space-between;
+    margin:0 auto;
+    font-family:fantasy;
+}
+.ul{
+   display: flex;
+    gap: 3.2rem;
+}/* Define styles for NavLink */
+.navLink {
+    text-decoration: none;
+    color:#646cff; /* Set the default color for NavLink */
+}
+
+/* Styles for the active NavLink */
+.activeLink {
+    color: #ff0000; /* Set the color for active link */
+}
