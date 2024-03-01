@@ -3,20 +3,14 @@
   padding: 0%;
   box-sizing: border-box;
   background: #000000 ;
+  color:#f4f3ff;
 
 }
 html{
   font-size: 120%;
   font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
-:root{
-  --bg-color:#f4f3ff;
-  --btn-color:#646cff;
-  --dark-color:#242424;
-  --helper-color:#99b9ff;
-  
 
-}
 li{
   list-style: none;
 }
@@ -50,8 +44,6 @@ nav li {
 .submit-button {
   display: inline-block;
   padding: 10px 20px;
-  background-color: #007bff; /* Blue background color */
-  color: #fff; /* White text color */
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -60,10 +52,3 @@ nav li {
   font-size: 16px;
 }
 
-.submit-button:hover {
-  background-color: #0056b3; /* Darker blue on hover */
-}
-
-.submit-button:active {
-  background-color: #004080; /* Darker blue when button is clicked */
-}
