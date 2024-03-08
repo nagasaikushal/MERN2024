@@ -11,10 +11,10 @@ const signup = z.object({
     .trim().min(3,{message : " Email should be atleast 3 characters"})
     .max(100,{message : " field should be not more than 50 characters"}),
 
-    PhoneNumber:z
+    phone:z
     .string({required_error:"Phone Number is required"})
-    .trim().min(10,{message : "Phone Number should be atleast characters 10"})
-    .max(12,{message : "phone number cant exceed 10 numbers"}),
+    .trim().min(1,{message : "Phone Number should be atleast characters 10"})
+    .max(15,{message : "phone number cant exceed 10 numbers"}),
 
     password:z
     .string({required_error:"Password is required"})

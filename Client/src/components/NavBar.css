@@ -1,21 +1,26 @@
-.container{
-    max-width: 140rem;
-    padding: 4.2rem 2.4rem;
+.container {
+    max-width: 90vw; /* Adjust as needed */
+    padding: 1.2rem 1.4rem;
     display: flex;
     justify-content: space-between;
-    margin:0 auto;
-    font-family:fantasy;
-}
+    margin: 10px auto; /* Adjust margin to create space from top */
+    font-family: fantasy;
+    background-color: rgb(0, 0, 0);
+    border-radius: 15px; /* Rounded corners */
+  }
+  
 .ul{
    display: flex;
     gap: 3.2rem;
 }/* Define styles for NavLink */
-.navLink {
-    text-decoration: none;
-    color:#646cff; /* Set the default color for NavLink */
-}
+/* NavBar.css */
 
-/* Styles for the active NavLink */
-.activeLink {
-    color: #ff0000; /* Set the color for active link */
-}
+.navLink {
+    color: rgb(255, 251, 251); /* Default color for nav links */
+    text-decoration: none;
+  }
+  
+  .activeLink {
+    color: red; /* Color for active nav link */
+  }
+  

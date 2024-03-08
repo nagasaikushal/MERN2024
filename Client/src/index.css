@@ -1,9 +1,9 @@
 *{
   margin: 0%;
   padding: 0%;
-  box-sizing: border-box;
-  background: #000000 ;
-  color:#f4f3ff;
+  box-sizing: border-box;background-repeat: no-repeat;
+  background-image:url("");
+  color:#000000;
 
 }
 html{
