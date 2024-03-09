@@ -12,7 +12,7 @@ const home =async(req,res)=>{
 
 const register =async(req,res)=>{
     try{
-        const {username , email , PhoneNumber , password } = req.body;
+        const {username , email , phone , password } = req.body;
         const User_Exists = await User.findOne({email})
         if(User_Exists){
             return res.status(400).json({msg : "User already exists on thsi mail . Please Login"})
@@ -20,7 +20,7 @@ const register =async(req,res)=>{
         // hash of pwd
 
 
-        const User_Created = await User.create({username , email , PhoneNumber , password,});
+        const User_Created = await User.create({username , email , phone , password,});
         res.status(200).json({msg :"REgistration Sucessfull",
          token: await User_Created.generateToken(),
          userId: User_Created._id.toString(),});

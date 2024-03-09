@@ -1,0 +1,76 @@
+/* CSS for About component */
+.about-container {
+    background-color: #f7fafc; /* Paper-like background color */
+    padding: 2rem; /* Decrease padding */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow for paper effect */
+    max-height: calc(100vh - 100px); /* Set max height for the card */
+    overflow-y: auto; /* Enable vertical scrolling */
+  }
+  
+  /* CSS for Leadership section */
+  .leadership-section {
+    margin-top: 2rem;
+  }
+  
+  /* CSS for Leadership card */
+  .leadership-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem; /* Decrease padding */
+    background-color: #ffffff; /* White background */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow for card effect */
+    transition: transform 0.3s ease-in-out; /* Animation */
+    margin-bottom: 1rem; /* Add margin bottom */
+  }
+  
+  .leadership-card:hover {
+    transform: translateY(-5px); /* Animation on hover */
+  }
+  /* CSS for About component */
+.about-container {
+    background-color: #f7fafc; /* Paper-like background color */
+    padding: 2rem;
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow for paper effect */
+  }
+  
+  /* CSS for Leadership section */
+  .leadership-section {
+    margin-top: 2rem;
+  }
+  
+  /* CSS for Team Member */
+  .team-member {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem; /* Add margin bottom */
+  }
+  
+  .team-member img {
+    border-radius: 50%; /* Rounded corners for image */
+  }
+  
+  .team-member-details {
+    flex: 1; /* Fill remaining space */
+  }
+  
+  .team-member-name {
+    font-weight: bold;
+  }
+  
+  .team-member-role {
+    color: #4a5568; /* Dark gray color */
+  }
+  
+  .team-member-description {
+    margin-top: 0.5rem; /* Add top margin */
+    color: #718096; /* Gray color */
+  }
+  .team-member img {
+    width: 200px; /* You can adjust the width as per your requirement */
+    height: 220px; /* You can adjust the height as per your requirement */
+  }  

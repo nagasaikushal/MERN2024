@@ -22,4 +22,4 @@ const signup = z.object({
     .max(20,{message : " field should be not more than 50 characters"})
 });
 
-module.exports = signup
+module.exports = signup;

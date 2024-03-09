@@ -23,21 +23,27 @@ export default function SignUp() {
     console.log({
       username: data.get('username'),
       email: data.get('email'),
-      phone: String(data.get('phone')),
+      phone: data.get('phone'),
       password: data.get('password'),
     });
-
-    // Convert phone number to string explicitly
-    const phoneNumber = String(data.get('phone'));
+    const phone = String(data.get('phone'));
 
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/reg', {
-        username: data.get('username'),
-        email: data.get('email'),
-        phone:String(data.get('phone')), // Send phone number as string
-        password: data.get('password'),
+      const response = await fetch('http://localhost:5000/api/auth/reg', {
+        method: "POST",
+        headers: {
+          'Content-type': 'application/json'
+        },
+        body: JSON.stringify({
+          username: data.get('username'),
+          email: data.get('email'),
+          phone: phone,
+          password: data.get('password'),
+        })
       });
-      console.log(response.data); // Handle response from server
+
+      const result = await response.json(); // Parsing JSON response
+      console.log(result); // Logging the result
     } catch (error) {
       console.error('Error occurred while posting form data:', error);
       // Handle error if any
@@ -90,10 +96,10 @@ export default function SignUp() {
                   <TextField
                     required
                     fullWidth
-                    id="Phone"
-                    label="Phone"
-                    name="Phone"
-                    autoComplete="Phone"
+                    id="phone"
+                    label="phone"
+                    name="phone"
+                    autoComplete="phone"
                   />
                 </Grid>
                 <Grid item xs={12}>
