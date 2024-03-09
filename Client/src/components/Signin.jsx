@@ -13,17 +13,39 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Paper from '@mui/material/Paper'; // Import Paper component
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import axios from 'axios';
 
 const defaultTheme = createTheme();
-
 export default function SignIn() {
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    const formData = new FormData(event.currentTarget);
+    const email = formData.get('email');
+    const password = formData.get('password');
+
+    try {
+      const response = await axios.post('http://localhost:5000/api/auth/login', {
+        email,
+        password,
+      });
+
+      if (response.status === 200) {
+        // Successfully logged in
+        alert("Login Successful");
+        // Reset form fields
+        event.target.reset();
+      } else {
+        // Handle other status codes (e.g., 401 for unauthorized)
+        console.error('Error logging in:', response.statusText);
+        alert("Invalid credentials");
+      }
+
+      const data = response.data; // Parsing JSON response
+      console.log(data); // Logging the response data
+    } catch (error) {
+      console.error('Error occurred while posting form data:', error);
+      // Handle error if any
+    }
   };
 
   return (
@@ -51,7 +73,7 @@ export default function SignIn() {
                 required
                 fullWidth
                 id="email"
-                label="Email Address"
+                label="email"
                 name="email"
                 autoComplete="email"
                 autoFocus

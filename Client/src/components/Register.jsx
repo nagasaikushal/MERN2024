@@ -44,8 +44,10 @@ export default function SignUp() {
 
       const result = await response.json(); // Parsing JSON response
       console.log(result); // Logging the result
+      alert("Registration Sucess")
     } catch (error) {
       console.error('Error occurred while posting form data:', error);
+      alert("Error Register")
       // Handle error if any
     }
   };
