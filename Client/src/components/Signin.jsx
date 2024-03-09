@@ -14,9 +14,11 @@ import Container from '@mui/material/Container';
 import Paper from '@mui/material/Paper'; // Import Paper component
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const defaultTheme = createTheme();
 export default function SignIn() {
+  const navigate = useNavigate();
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
@@ -34,6 +36,7 @@ export default function SignIn() {
         alert("Login Successful");
         // Reset form fields
         event.target.reset();
+        navigate('/UserDashboard');
       } else {
         // Handle other status codes (e.g., 401 for unauthorized)
         console.error('Error logging in:', response.statusText);
