@@ -5,6 +5,7 @@ import Contact from './components/Contact'
 import Signin from './components/Signin'
 import UserDashboard from "./components/UserDashboard"
 import Register from './components/Register'
+import Footer from './components/Footer'
 import {BrowserRouter , Routes , Route} from 'react-router-dom'
 import NavBar from './components/NavBar'
 const App = () => {
@@ -20,6 +21,7 @@ const App = () => {
             <Route path="/login" element={<Signin/>} />
             <Route path="/Register" element={<Register/>} />
             <Route path="/UserDashboard" element={<UserDashboard/>} />
+            <Route path="/Footer" element={<Footer/>} />
         </Routes>
         </BrowserRouter>
     </div>

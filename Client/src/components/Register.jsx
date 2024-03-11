@@ -13,43 +13,26 @@ import Container from '@mui/material/Container';
 import Paper from '@mui/material/Paper';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios'; // Import axios library
+import { useState } from "react";
 
 const defaultTheme = createTheme();
 
-export default function SignUp() {
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      username: data.get('username'),
-      email: data.get('email'),
-      phone: data.get('phone'),
-      password: data.get('password'),
-    });
-    const phone = String(data.get('phone'));
+export const Register = () => {
+  const [user, setUser] = useState({
+    username: "",
+    email: "",
+    phone: "",
+    password: ""
+  });
 
-    try {
-      const response = await fetch('http://localhost:5000/api/auth/reg', {
-        method: "POST",
-        headers: {
-          'Content-type': 'application/json'
-        },
-        body: JSON.stringify({
-          username: data.get('username'),
-          email: data.get('email'),
-          phone: phone,
-          password: data.get('password'),
-        })
-      });
+  const handleInput = (e) => {
+    setUser({ ...user, [e.target.name]: e.target.value });
+  };
 
-      const result = await response.json(); // Parsing JSON response
-      console.log(result); // Logging the result
-      alert("Registration Sucess")
-    } catch (error) {
-      console.error('Error occurred while posting form data:', error);
-      alert("Error Register")
-      // Handle error if any
-    }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Here you can perform actions like submitting the form data to a server
+    console.log(user);
   };
 
   return (
@@ -77,10 +60,13 @@ export default function SignUp() {
                   <TextField
                     autoComplete="username"
                     name="username"
+                    type='text'
                     required
                     fullWidth
                     id="username"
                     label="username"
+                    value={user.username}
+                    onChange={handleInput}
                     autoFocus
                   />
                 </Grid>
@@ -89,9 +75,12 @@ export default function SignUp() {
                     required
                     fullWidth
                     id="email"
+                    type='email'
                     label="email"
                     name="email"
                     autoComplete="email"
+                    value={user.email}
+                    onChange={handleInput}
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -99,9 +88,12 @@ export default function SignUp() {
                     required
                     fullWidth
                     id="phone"
+                    type='number'
                     label="phone"
                     name="phone"
                     autoComplete="phone"
+                    value={user.phone}
+                    onChange={handleInput}
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -109,13 +101,14 @@ export default function SignUp() {
                     required
                     fullWidth
                     name="password"
+                    type='password'
                     label="Password"
-                    type="password"
                     id="password"
                     autoComplete="new-password"
+                    value={user.password}
+                    onChange={handleInput}
                   />
                 </Grid>
-        
               </Grid>
               <Button
                 type="submit"
@@ -132,3 +125,4 @@ export default function SignUp() {
     </ThemeProvider>
   );
 }
+export default Register;

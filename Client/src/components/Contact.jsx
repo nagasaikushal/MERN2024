@@ -11,32 +11,32 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Paper from '@mui/material/Paper';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import axios from 'axios'; // Import axios library
-
+import axios from 'axios'; 
+import Footer from './Footer';
+import { useState } from "react";
 const defaultTheme = createTheme();
 
-export default function Contact() {
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    const formData = new FormData(event.currentTarget);
-    const data = {
-      name: formData.get('name'),
-      email: formData.get('email'),
-      feedback: formData.get('feedback'),
-    };
 
-    try {
-      const response = await axios.post('http://localhost:5000/api/contact', data);
-      console.log(response.data); // Logging the response data
-      // Reset form fields after successful submission
-      event.target.reset();
-    } catch (error) {
-      console.error('Error occurred while posting form data:', error);
-      // Handle error if any
-    }
+
+export const Contact = () => {
+  const [user, setUser] = useState({
+    email: "",
+    password: ""
+  });
+
+  const handleInput = (e) => {
+    setUser({ ...user, [e.target.name]: e.target.value });
   };
 
-  return (
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Here you can perform actions like submitting the form data to a server
+    console.log(user);
+  };
+
+
+
+  return (<div>
     <ThemeProvider theme={defaultTheme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
@@ -103,5 +103,11 @@ export default function Contact() {
         </Box>
       </Container>
     </ThemeProvider>
+    <div className='foot' style={{ position: 'fixed', bottom: 0, width: '100%' }}>
+    <Footer/>
+    </div>
+        </div>
   );
+
 }
+ export default Contact;
