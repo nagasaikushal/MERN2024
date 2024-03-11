@@ -18,6 +18,13 @@ app.post('http://localhost:5000/api/auth/reg',(request,response) => {
   
   })
   
+  app.post('http://localhost:5000/api/form/contact',(request,response) => {
+    response.send('YOUR EXPRESS BACKEND IS CONNECTED TO REACT');
+    console.log(request.body)
+    col.insertOne(request.body)
+    console.log("Documents Inserted");
+  
+  })
   
 connectdb().then(()=>{
     app.listen(5000)

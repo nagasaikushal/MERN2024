@@ -23,4 +23,7 @@
   .activeLink {
     color: red; /* Color for active nav link */
   }
+  .appBar {
+    background-color: transparent; /* Set the background color to transparent */
+  }
   

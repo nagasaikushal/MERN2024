@@ -11,33 +11,34 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Paper from '@mui/material/Paper';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import axios from 'axios'; // Import axios library
+import axios from 'axios'; // Import axios for API calls
+import NavBar from './NavBar'
 
 const defaultTheme = createTheme();
 
 export default function Contact() {
   const handleSubmit = async (event) => {
     event.preventDefault();
+
     const formData = new FormData(event.currentTarget);
-    const data = {
-      name: formData.get('name'),
-      email: formData.get('email'),
-      feedback: formData.get('feedback'),
-    };
 
     try {
-      const response = await axios.post('http://localhost:5000/api/contact', data);
-      console.log(response.data); // Logging the response data
+      const response = await axios.post('http://localhost:5000/api/form/contact', formData); // Use axios for POST request
+
+      console.log(response.data); // Log the response data from the server
+
       // Reset form fields after successful submission
       event.target.reset();
+      alert("Feedback sent successfully!");
     } catch (error) {
       console.error('Error occurred while posting form data:', error);
-      // Handle error if any
+      alert("An error occurred while sending feedback. Please try again."); // Display a more informative error message
     }
   };
 
   return (
     <ThemeProvider theme={defaultTheme}>
+      <NavBar />
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
@@ -48,23 +49,23 @@ export default function Contact() {
             alignItems: 'center',
           }}
         >
-          <Paper elevation={3} sx={{ padding: 3 }}> {/* Paper component with elevation */}
+          <Paper elevation={3} sx={{ padding: 3 }}>
             <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
-              FeedBack Form
+              Feedback Form
             </Typography>
             <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
               <Grid container spacing={2}>
                 <Grid item xs={12}>
                   <TextField
-                    autoComplete="name"
-                    name="name"
+                    autoComplete="username"
+                    name="username"
                     required
                     fullWidth
-                    id="name"
-                    label="Name"
+                    id="username"
+                    label="Username" // Corrected typo: "userame" -> "Username"
                     autoFocus
                   />
                 </Grid>

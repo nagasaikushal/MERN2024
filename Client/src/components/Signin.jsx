@@ -15,6 +15,7 @@ import Paper from '@mui/material/Paper'; // Import Paper component
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import NavBar from './NavBar'
 
 const defaultTheme = createTheme();
 export default function SignIn() {
@@ -33,7 +34,6 @@ export default function SignIn() {
 
       if (response.status === 200) {
         // Successfully logged in
-        alert("Login Successful");
         // Reset form fields
         event.target.reset();
         navigate('/UserDashboard');
@@ -53,6 +53,7 @@ export default function SignIn() {
 
   return (
     <ThemeProvider theme={defaultTheme}>
+      <NavBar />
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box

@@ -13,10 +13,13 @@ import Container from '@mui/material/Container';
 import Paper from '@mui/material/Paper';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios'; // Import axios library
+import NavBar from './NavBar'
+import { useNavigate } from 'react-router-dom';
 
 const defaultTheme = createTheme();
 
 export default function SignUp() {
+  const navigate = useNavigate();
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -45,6 +48,8 @@ export default function SignUp() {
       const result = await response.json(); // Parsing JSON response
       console.log(result); // Logging the result
       alert("Registration Sucess")
+        navigate('/login');
+      
     } catch (error) {
       console.error('Error occurred while posting form data:', error);
       alert("Error Register")
@@ -54,6 +59,7 @@ export default function SignUp() {
 
   return (
     <ThemeProvider theme={defaultTheme}>
+      <NavBar />
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
