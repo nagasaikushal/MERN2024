@@ -11,34 +11,33 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Paper from '@mui/material/Paper';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import axios from 'axios'; // Import axios for API calls
-import NavBar from './NavBar'
-
+import axios from 'axios'; 
+import Footer from './Footer';
+import { useState } from "react";
 const defaultTheme = createTheme();
 
-export default function Contact() {
-  const handleSubmit = async (event) => {
-    event.preventDefault();
 
-    const formData = new FormData(event.currentTarget);
 
-    try {
-      const response = await axios.post('http://localhost:5000/api/form/contact', formData); // Use axios for POST request
+export const Contact = () => {
+  const [user, setUser] = useState({
+    email: "",
+    password: ""
+  });
 
-      console.log(response.data); // Log the response data from the server
-
-      // Reset form fields after successful submission
-      event.target.reset();
-      alert("Feedback sent successfully!");
-    } catch (error) {
-      console.error('Error occurred while posting form data:', error);
-      alert("An error occurred while sending feedback. Please try again."); // Display a more informative error message
-    }
+  const handleInput = (e) => {
+    setUser({ ...user, [e.target.name]: e.target.value });
   };
 
-  return (
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Here you can perform actions like submitting the form data to a server
+    console.log(user);
+  };
+
+
+
+  return (<div>
     <ThemeProvider theme={defaultTheme}>
-      <NavBar />
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
@@ -49,23 +48,25 @@ export default function Contact() {
             alignItems: 'center',
           }}
         >
-          <Paper elevation={3} sx={{ padding: 3 }}>
+          <Paper elevation={3} sx={{ padding: 3 }}> {/* Paper component with elevation */}
             <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
-              Feedback Form
+              FeedBack Form
             </Typography>
             <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
               <Grid container spacing={2}>
                 <Grid item xs={12}>
                   <TextField
-                    autoComplete="username"
-                    name="username"
+                    autoComplete="name"
+                    name="name"
                     required
                     fullWidth
-                    id="username"
-                    label="Username" // Corrected typo: "userame" -> "Username"
+                    id="name"
+                    label="Name"
+                    value={user.name}
+                    onChange={handleInput}
                     autoFocus
                   />
                 </Grid>
@@ -77,6 +78,9 @@ export default function Contact() {
                     label="Email"
                     name="email"
                     autoComplete="email"
+                    type='email'
+                    value={user.email}
+                    onChange={handleInput}
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -86,6 +90,8 @@ export default function Contact() {
                     id="feedback"
                     label="Feedback"
                     name="feedback"
+                    value={user.feedback}
+                    onChange={handleInput}
                     multiline
                     rows={4}
                   />
@@ -104,5 +110,11 @@ export default function Contact() {
         </Box>
       </Container>
     </ThemeProvider>
+    <div className='foot' style={{ position: 'fixed', bottom: 0, width: '100%' }}>
+    <Footer/>
+    </div>
+        </div>
   );
+
 }
+ export default Contact;

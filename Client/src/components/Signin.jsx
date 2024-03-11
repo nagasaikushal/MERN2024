@@ -14,46 +14,30 @@ import Container from '@mui/material/Container';
 import Paper from '@mui/material/Paper'; // Import Paper component
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-import NavBar from './NavBar'
+import { useState } from "react";
 
 const defaultTheme = createTheme();
-export default function SignIn() {
-  const navigate = useNavigate();
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    const formData = new FormData(event.currentTarget);
-    const email = formData.get('email');
-    const password = formData.get('password');
 
-    try {
-      const response = await axios.post('http://localhost:5000/api/auth/login', {
-        email,
-        password,
-      });
 
-      if (response.status === 200) {
-        // Successfully logged in
-        // Reset form fields
-        event.target.reset();
-        navigate('/UserDashboard');
-      } else {
-        // Handle other status codes (e.g., 401 for unauthorized)
-        console.error('Error logging in:', response.statusText);
-        alert("Invalid credentials");
-      }
+export const Signin = () => {
+  const [user, setUser] = useState({
+    email: "",
+    password: ""
+  });
 
-      const data = response.data; // Parsing JSON response
-      console.log(data); // Logging the response data
-    } catch (error) {
-      console.error('Error occurred while posting form data:', error);
-      // Handle error if any
-    }
+  const handleInput = (e) => {
+    setUser({ ...user, [e.target.name]: e.target.value });
   };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Here you can perform actions like submitting the form data to a server
+    console.log(user);
+  };
+
 
   return (
     <ThemeProvider theme={defaultTheme}>
-      <NavBar />
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
@@ -79,7 +63,10 @@ export default function SignIn() {
                 id="email"
                 label="email"
                 name="email"
-                autoComplete="email"
+                autoComplete="off"
+                type='email'
+                value={user.email}
+                    onChange={handleInput}
                 autoFocus
               />
               <TextField
@@ -90,7 +77,9 @@ export default function SignIn() {
                 label="Password"
                 type="password"
                 id="password"
-                autoComplete="current-password"
+                autoComplete="off"
+                value={user.password}
+                    onChange={handleInput}
               />
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
@@ -117,4 +106,6 @@ export default function SignIn() {
       </Container>
     </ThemeProvider>
   );
+
 }
+ export default Signin;
