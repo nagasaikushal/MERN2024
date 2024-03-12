@@ -1,6 +1,7 @@
 import React from 'react';
 import './About.css'; // Import CSS file
 import NavBar from './NavBar'
+import '../index.css'
 
 const About = () => {
   const teamMembers = [
@@ -24,7 +25,8 @@ const About = () => {
     },
   ];
 
-  return (<div><NavBar />
+  return (<div className='bg-color'>
+     <NavBar />
     <div className="about-container">
       
       <h1>About Us</h1>

@@ -5,8 +5,9 @@
     justify-content: space-between;
     margin: 10px auto; /* Adjust margin to create space from top */
     font-family: fantasy;
-    background-color: rgb(0, 0, 0);
+    background-color:rgba(255, 255, 255, 0.5);;
     border-radius: 15px; /* Rounded corners */
+    font-weight: bold;
   }
   
 .ul{
@@ -16,7 +17,7 @@
 /* NavBar.css */
 
 .navLink {
-    color: rgb(255, 251, 251); /* Default color for nav links */
+    color: rgb(0, 0, 0); /* Default color for nav links */
     text-decoration: none;
   }
   

@@ -55,3 +55,33 @@ nav li {
 .Travel-btn{
   margin-top: 0%;
 }
+.bg-color{
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: rgb(9,9,121);
+background: linear-gradient(180deg, rgba(9,9,121,1) 27%, rgba(0,212,255,1) 100%);
+  height: 100vh; /* Ensure the background covers the entire viewport height */
+}
+.btn-vacation {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: transparent;
+  color: rgb(0, 0, 0);
+  border: 3px solid black; /* Set border color */
+  padding: 20px 40px;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 30px; /* Increase border radius for more curved corners */
+  transition: color 0.3s ease, box-shadow 0.3s ease; /* Add transition for text color and box shadow change */
+}
+
+.btn-vacation:hover {
+  color: black; /* Change text color to black on hover */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Add box shadow for levitation effect */
+}

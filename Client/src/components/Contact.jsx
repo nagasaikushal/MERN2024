@@ -15,28 +15,37 @@ import axios from 'axios';
 import Footer from './Footer';
 import { useState } from "react";
 const defaultTheme = createTheme();
-
+import '../index.css'
+import NavBar from './NavBar';
 
 
 export const Contact = () => {
   const [user, setUser] = useState({
-    email: "",
-    password: ""
+    name:"",
+    email:"",
+    feedback:""
   });
 
   const handleInput = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
-
-  const handleSubmit = (e) => {
+  const handleSubmit =async (e) => {
     e.preventDefault();
     // Here you can perform actions like submitting the form data to a server
     console.log(user);
+    const Response =await fetch("http://localhost:5000/api/form/contact",{
+      method:"POST",
+      headers:{
+        'Content-Type':'application/json'
+      },
+      body:JSON.stringify(user),
+    });
+    console.log(Response)
   };
 
 
 
-  return (<div>
+  return (<div className='bg-color'> <NavBar />
     <ThemeProvider theme={defaultTheme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
