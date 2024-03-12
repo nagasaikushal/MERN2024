@@ -14,6 +14,11 @@ import Paper from '@mui/material/Paper';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios'; // Import axios library
 import { useState } from "react";
+<<<<<<< HEAD
+=======
+import '../index.css'
+import NavBar from './NavBar';
+>>>>>>> Feature
 
 const defaultTheme = createTheme();
 
@@ -29,13 +34,29 @@ export const Register = () => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
+<<<<<<< HEAD
   const handleSubmit = (e) => {
     e.preventDefault();
     // Here you can perform actions like submitting the form data to a server
     console.log(user);
+=======
+  const handleSubmit =async (e) => {
+    e.preventDefault();
+    // Here you can perform actions like submitting the form data to a server
+    console.log(user);
+    const Response =await fetch("http://localhost:5000/api/auth/reg",{
+      method:"POST",
+      headers:{
+        'Content-Type':'application/json'
+      },
+      body:JSON.stringify(user),
+    });
+    console.log(Response)
+>>>>>>> Feature
   };
 
   return (
+    <div className='bg-color'> <NavBar />
     <ThemeProvider theme={defaultTheme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
@@ -123,6 +144,7 @@ export const Register = () => {
         </Box>
       </Container>
     </ThemeProvider>
+    </div>
   );
 }
 export default Register;

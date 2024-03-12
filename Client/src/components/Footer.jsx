@@ -5,8 +5,8 @@ const Footer = () => {
     <footer style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '20px', backgroundColor: '#f0f0f0' }}>
       <div style={{ width: '45%' }}>
         <h2>Contact Details</h2>
-        <p>Address: 123 Street, City, Country</p>
-        <p>Email: example@example.com</p>
+        <p>Address: KL Univeristy <br/> Green fields , Guntur.</p>
+        <p>Email: S13T14@gmail.com</p>
         <p>Phone: 123-456-7890</p>
       </div>
       <div style={{ width: '45%' }}>

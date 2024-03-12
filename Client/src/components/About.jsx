@@ -1,5 +1,7 @@
 import React from 'react';
 import './About.css'; // Import CSS file
+import NavBar from './NavBar'
+import '../index.css'
 
 const About = () => {
   const teamMembers = [
@@ -23,12 +25,13 @@ const About = () => {
     },
   ];
 
-  return (
+  return (<div className='bg-color'>
+     <NavBar />
     <div className="about-container">
+      
       <h1>About Us</h1>
       <div className="leadership-section">
-        <h2>Our Mission</h2>
-        <p>We aim to revolutionize the travel and hospitality industry by providing seamless booking experiences for travelers around the world.</p>
+        
         <h2>Our Team</h2>
         <div className="team-details">
           {teamMembers.map((member) => (
@@ -43,6 +46,7 @@ const About = () => {
           ))}
         </div>
       </div>
+    </div>
     </div>
   );
 };
